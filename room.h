@@ -2,11 +2,12 @@
 #define ROOM_H
 
 
+#include <Weapon.h>
 #include <map>
 #include <string>
 #include <vector>
 #include "item.h"
-#include "Actor.h"
+#include "actor.h"
 #include "dialog.h"
 
 using namespace std;
@@ -16,21 +17,25 @@ class Room{
 
 private:
 
-    map<string, Room*> exits;
+
     string exitString();
 
 
 
 
 public:
+    map<string, Room*> exits;
     string id;
+    string tempExit;
     Room(string id);
+    Dialog* currentDialog = nullptr;
     void setExits(Room *north, Room *east, Room *south, Room *west);
-    vector <Item<void*>> itemsInRoom;
+    vector<Room> getExits();
+    vector <Weapon> WeaponInRoom;
     vector <Actor> peopleInRoom;
     vector<Dialog*> roomDialogs;
     Room* nextRoom(string direction);
-    void addItem(Item<void*> *inItem);
+    void addWeapon(Weapon *weapon);
     void addActor(Actor *InActor);
     void addDialog(Dialog* dialog);
     string displayItem();

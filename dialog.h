@@ -13,11 +13,12 @@ private:
     string message;
     vector<Dialog*> linkedMessgaes;
 public:
-    Dialog();
     ~Dialog();
     Dialog(string message);
     void addLinkDialog(Dialog*);
+    vector<Dialog*> getLinkedDialog();
     void setMessage(string message);
+    string getMessage();
     Dialog* getDialog(string key);
 
 };

@@ -4,13 +4,15 @@
 #include "Actor.h"
 #include "item.h"
 
+#include <Weapon.h>
 
 
-class BaseballBat : public Item<Actor>
+
+class BaseballBat : public Weapon
 {
 public:
+    int damage = 10;
     BaseballBat();
-    void use(Actor& actor);
 };
 
 #endif // BASEBALLBAT_H

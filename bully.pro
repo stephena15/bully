@@ -9,8 +9,10 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Weapon.cpp \
     actor.cpp \
     baseballbat.cpp \
+    custombutton.cpp \
     dialog.cpp \
     item.cpp \
     main.cpp \
@@ -20,8 +22,10 @@ SOURCES += \
     school.cpp
 
 HEADERS += \
+    Weapon.h \
     actor.h \
     baseballbat.h \
+    custombutton.h \
     dialog.h \
     item.h \
     mainwindow.h \

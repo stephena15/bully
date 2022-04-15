@@ -1,13 +1,15 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Actor.h"
+#include "actor.h"
+
 
 
 
 class Player : Actor
 {
 public:
+
     Player();
 };
 

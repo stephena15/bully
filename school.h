@@ -17,8 +17,8 @@ private:
 public:
       explicit School(Player& player);
       void enterClass(const string& direction);
-      Player* player;
-      Room *currentRoom;
+      Player* player = nullptr;
+      Room *currentRoom = nullptr;
 };
 
 #endif // SCHOOL_H

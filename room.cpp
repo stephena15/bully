@@ -1,6 +1,6 @@
 #include "room.h"
 
-#include <qDebug>
+#include <QDebug>
 
 Room::Room(string id)
 {
@@ -15,7 +15,7 @@ void Room::setExits(Room *north, Room *east, Room *south, Room *west) {
         exits["south"] = south;
     if (west != nullptr)
         exits["west"] = west;
-    qDebug()<<"room";
+
 }
 
 string Room::exitString() {
@@ -34,11 +34,27 @@ Room* Room::nextRoom(string direction) {
                 // part of the "pair" (<string, Room*>) and return it.
 }
 
-void Room::addItem(Item<void*> *inItem){
-    itemsInRoom.push_back(*inItem);
+void Room::addWeapon(Weapon  *weapon){
+    WeaponInRoom.push_back(*weapon);
 }
 void Room::addActor(Actor *InActor){
     peopleInRoom.push_back(*InActor);
+}
+vector<Room> Room::getExits(){
+    vector<Room> allExit;
+    if(exits["north"]!=nullptr){
+        allExit.push_back(*exits["north"]);
+    }
+    if(exits["south"]!=nullptr){
+        allExit.push_back(*exits["south"]);
+    }
+    if(exits["east"]!=nullptr){
+        allExit.push_back(*exits["east"]);
+    }
+    if(exits["west"]!=nullptr){
+        allExit.push_back(*exits["west"]);
+    }
+    return allExit;
 }
 void Room::addDialog(Dialog* dialog){
     roomDialogs.push_back(dialog);

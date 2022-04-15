@@ -12,7 +12,6 @@ public:
     string name = "";
     string img = "";
     string value = 0;
-    Item();
     virtual void use(T& applyTo) = 0; //pure virtual function // interface
 };
 

@@ -1,16 +1,16 @@
 #include "school.h"
 
-#include <qDebug>
+#include <QDebug>
 
 School::School(Player& player)
 {
     this->player = &player;
     dialogs.push_back(new Dialog("Welcome to Mount Cell elementry"));
     dialogs.push_back(new Dialog("Insult Teacher"));
-    dialogs.push_back(new Dialog("Welcome to Mount Cell elementry"));
-    dialogs.push_back(new Dialog("Welcome to Mount Cell elementry"));
-    dialogs.push_back(new Dialog("Welcome to Mount Cell elementry"));
-    dialogs.push_back(new Dialog("Welcome to Mount Cell elementry"));
+    dialogs.push_back(new Dialog("Hi"));
+    dialogs.push_back(new Dialog("bye"));
+    dialogs.push_back(new Dialog("slap"));
+    dialogs.push_back(new Dialog("eat"));
     dialogs.push_back(new Dialog("Welcome to Mount Cell elementry"));
     dialogs.push_back(new Dialog("Welcome to Mount Cell elementry"));
     dialogs.push_back(new Dialog("Welcome to Mount Cell elementry"));
@@ -42,11 +42,14 @@ School::School(Player& player)
 
     dialogs[0]->addLinkDialog(dialogs[3]);
     dialogs[0]->addLinkDialog(dialogs[5]);
+    createClassRooms();
 
 }
 void School::enterClass(const string& direction){
     Room* nextRoom = currentRoom->nextRoom(direction);
     if(nextRoom!=nullptr)currentRoom = nextRoom;
+    if(currentRoom->roomDialogs.size()>0)
+    currentRoom->currentDialog = currentRoom->roomDialogs[0];
     qDebug()<<QString::fromStdString(currentRoom->id);
 
 }
@@ -76,4 +79,6 @@ void School::createClassRooms(){
     i->setExits(b,nullptr,nullptr,nullptr);
     j->setExits(nullptr,nullptr,c,nullptr);
 
+    currentRoom = x;
+    currentRoom->currentDialog = currentRoom->roomDialogs[0];
 }
